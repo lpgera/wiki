@@ -15,7 +15,7 @@ module.exports = (req, res, next) => {
 
   if (!req.isAuthenticated()) {
     if (req.app.locals.appconfig.public !== true) {
-      return res.redirect('/login')
+      return res.redirect(appconfig.host + '/login')
     } else {
       req.user = rights.guest
       res.locals.isGuest = true

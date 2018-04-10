@@ -23,7 +23,7 @@ html(data-logic='error')
 
   body(class='is-forbidden')
     .container
-      a(href='/'): img(src=appconfig.host + '/images/logo.png')
+      a(href=appconfig.host + '/'): img(src=appconfig.host + '/images/logo.png')
       h1= t('errors:forbidden')
       h2= t('errors:forbiddendetail')
       a.button.is-amber.is-inverted(href=appconfig.host + '/')= t('errors:actions.gohome')

@@ -11,11 +11,11 @@ html(data-logic='login')
 
     // Favicon
     each favsize in [57, 60, 72, 76, 114, 120, 144, 152, 180]
-      link(rel='apple-touch-icon', sizes=favsize + 'x' + favsize, href='/favicons/apple-icon-' + favsize + 'x' + favsize + '.png')
-    link(rel='icon', type='image/png', sizes='192x192', href='/favicons/android-icon-192x192.png')
+      link(rel='apple-touch-icon', sizes=favsize + 'x' + favsize, href=appconfig.host + '/favicons/apple-icon-' + favsize + 'x' + favsize + '.png')
+    link(rel='icon', type='image/png', sizes='192x192', href=appconfig.host + '/favicons/android-icon-192x192.png')
     each favsize in [32, 96, 16]
-      link(rel='icon', type='image/png', sizes=favsize + 'x' + favsize, href='/favicons/favicon-' + favsize + 'x' + favsize + '.png')
-    link(rel='manifest', href='/manifest.json')
+      link(rel='icon', type='image/png', sizes=favsize + 'x' + favsize, href=appconfig.host + '/favicons/favicon-' + favsize + 'x' + favsize + '.png')
+    link(rel='manifest', href=appconfig.host + '/manifest.json')
 
     // JS / CSS
     script(type='text/javascript', src=appconfig.host + '/js/vendor.js')
@@ -24,7 +24,7 @@ html(data-logic='login')
   body
     #bg
       each bg in _.sampleSize([1, 2, 3],3)
-        div(style='background-image:url(/images/bg_' + bg + '.jpg);')
+        div(style='background-image:url(' + appconfig.host + '/images/bg_' + bg + '.jpg);')
     #root
       h1= appconfig.title
       h2= t('auth:loginrequired')
@@ -34,7 +34,7 @@ html(data-logic='login')
           = appflash[0].title
         h4= appflash[0].message
       if appconfig.auth.local.enabled
-        form(method='post', action='/login')
+        form(method='post', action=appconfig.host + '/login')
           input#login-user(type='text', name='email', placeholder=t('auth:fields.emailuser'))
           input#login-pass(type='password', name='password', placeholder=t('auth:fields.password'))
           button(type='submit')= t('auth:actions.login')

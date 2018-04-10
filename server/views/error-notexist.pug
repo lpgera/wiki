@@ -23,7 +23,7 @@ html(data-logic='error')
 
   body(class='is-notexist')
     .container
-      a(href='/'): img(src=appconfig.host + '/images/logo.png')
+      a(href=appconfig.host + '/'): img(src=appconfig.host + '/images/logo.png')
       h1 !{message}
       h2= t('errors:notexistdetail')
       a.button.is-amber.is-inverted.is-featured(href=appconfig.host + '/create/' + newpath)= t('errors:actions.create')

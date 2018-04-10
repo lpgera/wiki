@@ -23,7 +23,7 @@ html(data-logic='error')
 
   body(class='is-error')
     .container
-      a(href='/'): img(src=appconfig.host + '/images/logo.png')
+      a(href=appconfig.host + '/'): img(src=appconfig.host + '/images/logo.png')
       h1= message
       h2= t('errors:generic')
       a.button.is-amber.is-inverted.is-featured(href=appconfig.host + '/')= t('errors:actions.gohome')

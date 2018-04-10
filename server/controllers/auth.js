@@ -26,7 +26,7 @@ const bruteforce = new ExpressBrute(EBstore, {
       message: lang.t('auth:errors.toomanyattemptsmsg', { time: moment(nextValidRequestDate).fromNow() }),
       iconClass: 'fa-times'
     })
-    res.redirect('/login')
+    res.redirect(appconfig.host + '/login')
   }
 })
 
@@ -66,7 +66,7 @@ router.post('/login', bruteforce.prevent, function (req, res, next) {
     return req.logIn(user, function (err) {
       if (err) { return next(err) }
       req.brute.reset(function () {
-        return res.redirect('/')
+        return res.redirect(appconfig.host + '/')
       })
     }) || true
   }).catch(err => {
@@ -76,13 +76,13 @@ router.post('/login', bruteforce.prevent, function (req, res, next) {
         title: lang.t('auth:errors.invalidlogin'),
         message: lang.t('auth:errors.invalidloginmsg')
       })
-      return res.redirect('/login')
+      return res.redirect(appconfig.host + '/login')
     } else {
       req.flash('alert', {
         title: lang.t('auth:errors.loginerror'),
         message: err.message
       })
-      return res.redirect('/login')
+      return res.redirect(appconfig.host + '/login')
     }
   })
 })
@@ -112,7 +112,7 @@ router.get('/login/oauth2/callback', passport.authenticate('oauth2', { failureRe
  */
 router.get('/logout', function (req, res) {
   req.logout()
-  res.redirect('/')
+  res.redirect(appconfig.host + '/')
 })
 
 module.exports = router

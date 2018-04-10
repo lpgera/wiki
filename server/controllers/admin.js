@@ -17,7 +17,7 @@ const filesize = require('filesize.js')
  * Admin
  */
 router.get('/', (req, res) => {
-  res.redirect('/admin/profile')
+  res.redirect(appconfig.host + '/admin/profile')
 })
 
 router.get('/profile', (req, res) => {

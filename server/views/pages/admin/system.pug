@@ -8,7 +8,7 @@ block adminContent
   admin-settings(inline-template)
     .form-sections
       section
-        img(src='/images/logo.png', style={width:'200px', float:'right'})
+        img(src=appconfig.host + '/images/logo.png', style={width:'200px', float:'right'})
         label.label= t('admin:system.systemversion')
         .section-block
           p #{t('admin:system.currentversion')}: #[strong= sysversion.current]

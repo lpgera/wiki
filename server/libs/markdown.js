@@ -13,6 +13,7 @@ const mdExternalLinks = require('markdown-it-external-links')
 const mdExpandTabs = require('markdown-it-expand-tabs')
 const mdAttrs = require('markdown-it-attrs')
 const mdMathjax = require('markdown-it-mathjax')()
+const mdReplaceLink = require('markdown-it-replace-link')
 const mathjax = require('mathjax-node')
 const hljs = require('highlight.js')
 const cheerio = require('cheerio')
@@ -35,6 +36,12 @@ var mkdown = md({
       }
     }
     return '<pre><code>' + _.escape(str) + '</code></pre>'
+  },
+  replaceLink(link, env) {
+    if (link.startsWith('/')) {
+      return appconfig.host + link
+    }
+    return link
   }
 })
   .use(mdEmoji)
@@ -56,6 +63,7 @@ var mkdown = md({
     tabWidth: 4
   })
   .use(mdAttrs)
+  .use(mdReplaceLink)
 
 if (appconfig.features.mathjax) {
   mkdown.use(mdMathjax)

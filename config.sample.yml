@@ -18,6 +18,8 @@ title: Wiki
 
 host: http://localhost
 
+assethost: http://localhost
+
 # ---------------------------------------------------------------------
 # Port the main server should listen to (80 by default)
 # ---------------------------------------------------------------------
